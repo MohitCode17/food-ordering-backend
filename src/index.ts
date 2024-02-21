@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import "dotenv/config";
 
 // IMPORTING ROUTES
-import myUserRoutes from "../routes/MyUserRoutes";
+import myUserRoutes from "./routes/MyUserRoutes";
 
 // DATABASE CONNECTION
 mongoose.connect(process.env.MONGODB_URL as string)
