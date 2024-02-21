@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import User from "../models/user-model";
+import { send } from "process";
 
 export const createUser = async (req: Request, res: Response) => {
     try {
@@ -9,7 +10,7 @@ export const createUser = async (req: Request, res: Response) => {
         let user = await User.findOne({ auth0Id });
 
         if(user) {
-            return res.status(400).json({message: "User already exists"});
+            return res.status(200).send();
         };
 
         user = new User(req.body);
