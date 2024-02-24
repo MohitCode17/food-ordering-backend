@@ -41,6 +41,18 @@ export const updateUser = async (req: Request, res: Response) => {
 
         res.status(200).json(user);
     } catch (error) {
-        
+        res.status(500).json({message: "Error updating user!"}); 
+    }
+}
+
+export const getCurrentUser = async (req: Request, res: Response) => {
+    try {
+        const currentUser = await User.findOne({_id: req.userId});
+
+        if(!currentUser) return res.status(404).json({message: "No user found"});
+
+        res.status(200).json(currentUser);
+    } catch (error) {
+        res.status(500).json({message: "Error fetching user!"});
     }
 }
