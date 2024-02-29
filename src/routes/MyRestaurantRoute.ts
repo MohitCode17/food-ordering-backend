@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import { createMyRestaurant, getMyRestaurant } from "../controllers/myRestaurantController";
+import { createMyRestaurant, getMyRestaurant, updateMyRestaurant } from "../controllers/myRestaurantController";
 import { jwtCheck, jwtParse } from "../middlewares/auth";
 import { validateMyRestaurantRequest } from "../middlewares/validateRequest";
 
@@ -20,5 +20,8 @@ router.get("/", jwtCheck, jwtParse, getMyRestaurant);
 
 // Create Restaurant Api Route
 router.post("/", upload.single("imageFile"), validateMyRestaurantRequest, jwtCheck, jwtParse, createMyRestaurant);
+
+// Update Restaurant Api Route
+router.put("/", upload.single("imageFile"), validateMyRestaurantRequest, jwtCheck, jwtParse, updateMyRestaurant);
 
 export default router;
